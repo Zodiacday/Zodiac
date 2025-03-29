@@ -1,0 +1,382 @@
+/* Reset and Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: #8A2BE2;
+    --secondary-color: #4B0082;
+    --accent-color: #FF1493;
+    --text-color: #E6E6FA;
+    --background-color: #0E0B16;
+    --card-bg-color: rgba(30, 20, 50, 0.8);
+    --card-hover-bg: rgba(40, 30, 70, 0.9);
+}
+
+html, body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Cosmic Background Styles */
+.cosmos-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.stars, .twinkling, .clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.stars {
+    background: url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+    z-index: -3;
+}
+
+.twinkling {
+    background: url(http://www.script-tutorials.com/demos/360/images/twinkling.png) repeat top center;
+    z-index: -2;
+    animation: move-twinkle 200s linear infinite;
+}
+
+.clouds {
+    background: url(http://www.script-tutorials.com/demos/360/images/clouds.png) repeat top center;
+    z-index: -1;
+    opacity: 0.4;
+    animation: move-clouds 150s linear infinite;
+}
+
+@keyframes move-twinkle {
+    from {background-position: 0 0;}
+    to {background-position: -10000px 5000px;}
+}
+
+@keyframes move-clouds {
+    from {background-position: 0 0;}
+    to {background-position: 10000px 0;}
+}
+
+/* Layout Styles */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    padding: 2rem 0;
+    position: relative;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px rgba(255, 20, 147, 0.7);
+}
+
+.tagline {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    opacity: 0.8;
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+/* Zodiac Grid Styles */
+.zodiac-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 30px;
+    margin: 2rem 0;
+}
+
+.zodiac-card {
+    position: relative;
+    height: 300px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: transform 0.5s ease, box-shadow 0.3s ease;
+    perspective: 1000px;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.zodiac-card:hover .card-inner {
+    box-shadow: 0 15px 30px rgba(138, 43, 226, 0.4);
+}
+
+.zodiac-card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: var(--card-bg-color);
+    border: 1px solid rgba(138, 43, 226, 0.3);
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    text-align: center;
+}
+
+.zodiac-symbol {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 1rem;
+    color: var(--accent-color);
+}
+
+.zodiac-symbol svg {
+    width: 100%;
+    height: 100%;
+}
+
+.zodiac-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.zodiac-date {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.horoscope-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.horoscope-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* Detailed Horoscope View */
+.horoscope-detail {
+    background: var(--card-bg-color);
+    border-radius: 15px;
+    padding: 30px;
+    border: 1px solid rgba(138, 43, 226, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    margin: 2rem 0;
+    position: relative;
+}
+
+.horoscope-detail.hidden {
+    display: none;
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: transparent;
+    border: none;
+    color: var(--accent-color);
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: color 0.3s;
+}
+
+.back-button:hover {
+    color: var(--primary-color);
+}
+
+.horoscope-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.horoscope-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 10px rgba(255, 20, 147, 0.5);
+}
+
+.date-range {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.8;
+}
+
+.sign-details {
+    display: inline-block;
+    text-align: left;
+    background: rgba(20, 10, 40, 0.5);
+    padding: 15px 25px;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.horoscope-section {
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+}
+
+.horoscope-section h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
+    font-size: 1.3rem;
+}
+
+.horoscope-section p {
+    line-height: 1.7;
+}
+
+.horoscope-extras {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 2rem;
+    padding: 15px;
+    background: rgba(20, 10, 40, 0.5);
+    border-radius: 10px;
+}
+
+/* Footer Styles */
+footer {
+    margin-top: 3rem;
+    text-align: center;
+    opacity: 0.8;
+    padding-bottom: 80px;
+}
+
+/* Ad Preferences Button */
+.ad-preferences {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 30px;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    z-index: 1000;
+    transition: background-color 0.3s;
+}
+
+.ad-preferences:hover {
+    background: var(--accent-color);
+}
+
+/* Animation for floating cards */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.zodiac-card {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Stagger animation timing for different cards */
+.zodiac-card:nth-child(2n) {
+    animation-delay: 0.5s;
+}
+
+.zodiac-card:nth-child(3n) {
+    animation-delay: 1s;
+}
+
+.zodiac-card:nth-child(4n) {
+    animation-delay: 1.5s;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .zodiac-grid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        gap: 15px;
+    }
+    
+    .zodiac-card {
+        height: 180px;
+    }
+    
+    .zodiac-symbol {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .zodiac-name {
+        font-size: 1.1rem;
+    }
+    
+    .zodiac-date {
+        font-size: 0.7rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .horoscope-content h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .zodiac-card, .twinkling, .clouds {
+        animation: none;
+    }
+}
