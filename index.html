@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Horoscopes | Daily Zodiac Readings</title>
+    <meta name="description" content="Discover your daily horoscope with our interactive 3D zodiac cards">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ads.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Google AdSense - Replace PUBLISHER_ID with your AdSense Publisher ID -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-PUBLISHER_ID" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="cosmos-background">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+        <div class="clouds"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <h1>Cosmic Horoscopes</h1>
+            <p class="tagline">Discover your celestial guidance for today</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="intro">
+            <p>Select your zodiac sign to reveal your daily horoscope</p>
+        </section>
+        
+        <!-- Top Advertisement - Horizontal Banner -->
+        <div class="ad-container ad-horizontal ad-top">
+            <!-- AdSense Ad Unit - Replace PUBLISHER_ID with your AdSense ID and TOP_AD_SLOT with the ad slot ID -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-PUBLISHER_ID"
+                 data-ad-slot="TOP_AD_SLOT"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+        </div>
+
+        <section class="zodiac-grid">
+            <!-- Zodiac cards will be dynamically generated here -->
+        </section>
+
+        <section class="horoscope-detail hidden" id="horoscopeDetail">
+            <button class="back-button" id="backButton">
+                <i class="fas fa-arrow-left"></i> Back to all signs
+            </button>
+            <div class="horoscope-content" id="horoscopeContent">
+                <!-- Horoscope details will appear here -->
+            </div>
+        </section>
+        
+        <!-- Bottom Advertisement - Responsive Banner -->
+        <div class="ad-container ad-responsive ad-bottom">
+            <!-- AdSense Ad Unit - Replace PUBLISHER_ID with your AdSense ID and BOTTOM_AD_SLOT with the ad slot ID -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-PUBLISHER_ID"
+                 data-ad-slot="BOTTOM_AD_SLOT"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="currentYear"></span> Cosmic Horoscopes | Daily readings for celestial guidance</p>
+            
+            <!-- Footer Advertisement -->
+            <div class="ad-container footer-ad">
+                <!-- AdSense Ad Unit - Replace PUBLISHER_ID with your AdSense ID and FOOTER_AD_SLOT with the ad slot ID -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-PUBLISHER_ID"
+                     data-ad-slot="FOOTER_AD_SLOT"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Ad Preferences Toggle -->
+    <div class="ad-preferences" id="adPreferences">
+        <i class="fas fa-ad"></i> <span id="adPreferenceText">Hide Ads</span>
+    </div>
+    
+    <script src="js/horoscopes.js"></script>
+    <script src="js/monthly-horoscopes.js"></script>
+    <script src="js/ad-manager.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
