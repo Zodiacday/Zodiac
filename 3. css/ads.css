@@ -1,0 +1,47 @@
+/* Ad Container Styles */
+.ad-container {
+    margin: 2rem 0;
+    padding: 10px;
+    background: rgba(30, 20, 50, 0.6);
+    border-radius: 10px;
+    border: 1px dashed rgba(138, 43, 226, 0.3);
+    transition: opacity 0.3s ease;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Top horizontal ad */
+.ad-horizontal {
+    max-width: 100%;
+    min-height: 90px;
+}
+
+/* Bottom responsive ad */
+.ad-responsive {
+    width: 100%;
+    min-height: 250px;
+}
+
+/* Footer ad */
+.footer-ad {
+    max-width: 100%;
+    min-height: 90px;
+    margin-top: 1.5rem;
+}
+
+/* Ad toggle functionality */
+.ad-free .ad-container {
+    display: none !important;
+}
+
+/* Ad-free layout adjustments */
+.ad-free .zodiac-grid,
+.ad-free .horoscope-detail {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* Hide ad containers when ads haven't loaded yet */
+.ad-container:empty {
+    display: none;
+}
